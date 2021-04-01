@@ -1,3 +1,21 @@
-<h1>Static Index</h1>
+<h1>Flickr Photo Search by User Name</h1>
 
-<%= image_tag(Flickr.url_s(@picture)) %>
+<%= form_with url: root_path, method: :get do |form| %>
+  <%= form.label "Flickr User Name" %><br>
+  <%= form.text_field :flickr_id %>
+  <%= form.submit "See Photos" %>
+<% end %>
+
+<% if @photos %>
+  <% @photos.each do |photo| %>
+    <%= image_tag(Flickr.url_q(photo)) %>
+  <% end %>
+<% end %>
+
+<p>Personal User Name Recommendations:</p>
+<ul>
+  <li>User Name: <strong>krishhtine</strong> (Photography by Kristine May)</li>
+  <li>User Name: <strong>elizabethgadd</strong> (Photography by Lizzy Gadd)</li>
+  <li>User Name: <strong>betinalaplante</strong> (Photography by Betina La Plante)</li>
+  <li>User Name: <strong>cookiesound</strong> (Photography by Nisa + Ulli Maier)</li>
+</ul>
